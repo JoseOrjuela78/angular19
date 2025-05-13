@@ -1,0 +1,12 @@
+https://www.youtube.com/watch?v=R1QePsia5xk : 5:50
+
+https://www.youtube.com/watch?v=ntBxiJHYuWQ
+
+ng g component components/home
+ng g c components/housingLocation
+ng g interface components/housingLocation
+ng g service components/housing --skip-tests
+ng g c components/details
+
+npm i json-server
+npx json-server db.json
