@@ -7,6 +7,8 @@ ng g c components/housingLocation
 ng g interface components/housingLocation
 ng g service components/housing --skip-tests
 ng g c components/details
+ng generate guard auth
+
 
 npm i json-server
 npx json-server db.json

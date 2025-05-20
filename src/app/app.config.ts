@@ -5,7 +5,6 @@ import { provideClientHydration, withEventReplay, withIncrementalHydration } fro
 import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 import { InterceptorService } from './components/common/interceptors/interceptor.service';
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({eventCoalescing:true}),

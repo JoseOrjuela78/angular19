@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service.service';
-import Swal from 'sweetalert2';
 import { StorageService } from '@app/components/common/strorage/storage.service';
 import { Isession } from '../models/session.Model';
-import { Router } from '@angular/router';
+import { Router, RouterModule} from '@angular/router';
 import { LoadingService } from '@app/components/common/loading/loading.service';
 import { ToastService } from '@app/components/common/toast/toast.service';
 
@@ -61,7 +60,7 @@ export class LoginComponent {
 
                                                                 if (resultPermissions === 200) {
                                                                     this.louding.hide();
-                                                                    return this.router.navigate(['/dashboard']);
+                                                                    return this.router.navigate(['/home']);
                                                                 } else {
                                                                 this.showError('Error cargando los permisos de usuario individuales');
           }                                                     },
