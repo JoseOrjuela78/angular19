@@ -1,1 +1,28 @@
-<p>change-pass works!</p>
+
+<div class="container-fluid">
+      <div class="m-2">
+        <h5 class="form-label text-center" ><strong>Cambiar Contraseña</strong></h5>
+        <form class="change-pass" [formGroup]="changePassForm" (submit)="changePass()">
+            <div class="mb-3">
+                <label for="InputPassword1" class="form-label">Contraseña nueva:</label>
+                <input formControlName="password" type="password" class="form-control" id="InputPassword1">
+                 <p *ngIf="changePassForm.hasError('required', 'password')" class="error-form">
+                     por favor digita tu nueva contraseña
+                 </p>
+                 <p *ngIf="changePassForm.controls['password'].hasError('minlength')" class="error-form">
+                     La contraseña debe tener al menos 6 dígitos
+                 </p>
+            </div>
+            <div class="mb-3">
+                <label for="InputPassword1" class="form-label">Repetir Contraseña:</label>
+                <input formControlName="confirmPass" type="password" class="form-control" id="InputPassword2">
+                <p *ngIf="changePassForm.hasError('notSame')" class="error-form">Las contraseñas no coinciden</p>
+            </div>
+                <button type="submit" class="btn btn-primary" [disabled]="!changePassForm.valid">Cambiar</button>
+       </form>
+    </div>
+   
+</div>
+
+
+

@@ -18,5 +18,9 @@ export class AuthService {
     return this.http.get(URIS.parametrias.getPermissionsUser,{ observe: 'response'});
  };
 
+ changePasswordUserBO(data: any):Observable<any>{
+   return this.http.post(URIS.usuarios.cambiarContrasena, data, { observe: 'response'});
+ }
+
 
 }

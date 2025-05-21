@@ -3,7 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../auth.service.service';
 import { StorageService } from '@app/components/common/strorage/storage.service';
 import { Isession } from '../models/session.Model';
-import { Router, RouterModule} from '@angular/router';
+import { Router} from '@angular/router';
 import { LoadingService } from '@app/components/common/loading/loading.service';
 import { ToastService } from '@app/components/common/toast/toast.service';
 
@@ -16,7 +16,7 @@ import { ToastService } from '@app/components/common/toast/toast.service';
 })
 export class LoginComponent {
   private authService = inject(AuthService);
-  private storeService = inject(StorageService);
+  private storgeService = inject(StorageService);
   private router = inject(Router);
   private louding = inject(LoadingService);
   private toastService = inject(ToastService);
@@ -43,7 +43,7 @@ export class LoginComponent {
                             if (![200, 203].includes(login.status)) return;
 
                             const session: Isession = { ...login.body, status: login.status };
-                            const resultSession = await this.storeService.cargarSesion(session);
+                            const resultSession = await this.storgeService.cargarSesion(session);
           
                             if (resultSession !== 200) {
                             return this.showError('Error cargue Session');
@@ -56,7 +56,7 @@ export class LoginComponent {
                                                                     return this.showError('Error cargando los permisos de usuario individuales');
                                                                 }
 
-                                                                const resultPermissions = await this.storeService.cargarPermisosUsuario(permissionsUser.body.permissions);
+                                                                const resultPermissions = await this.storgeService.cargarPermisosUsuario(permissionsUser.body.permissions);
 
                                                                 if (resultPermissions === 200) {
                                                                     this.louding.hide();
@@ -65,14 +65,14 @@ export class LoginComponent {
                                                                 this.showError('Error cargando los permisos de usuario individuales');
           }                                                     },
                              error: async (err) => {
-                                                    await this.storeService.cerraSesion();
+                                                    await this.storgeService.cerraSesion();
                                                     this.showError(err.error.message);
                                                    },
                              complete: () => console.log('proceso loadPermissionsUser completado')
                               });
                             },
     error: async (err) => {
-                          await this.storeService.cerraSesion();
+                          await this.storgeService.cerraSesion();
                           this.showError(err.error.message);
                           },
     complete: () => console.log('proceso Login completado')
@@ -80,7 +80,7 @@ export class LoginComponent {
 }
 
 private showError(message: string) {
-  this.toastService.showError(message)
+  this.toastService.show(message, 5000, 'error')
   this.louding.hide();
 }
 

@@ -12,7 +12,7 @@
         "statusBarItem.hoverBackground": "#f21bfab0",
         "titleBar.activeBackground": "#f21bfab0",
         "titleBar.activeForeground": "#e7e7e7",
-        "titleBar.inactiveBackground": "#dd053199",
+        "titleBar.inactiveBackground": "#f21bfab0",
         "titleBar.inactiveForeground": "#e7e7e799",
         "sash.hoverBorder": "#f21bfab0",
         "statusBarItem.remoteBackground": "#f21bfab0",

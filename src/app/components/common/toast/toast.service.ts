@@ -1,41 +1,18 @@
+// src/app/services/toast.service.ts
 import { Injectable } from '@angular/core';
+import { ToastComponent } from './toast.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToastService {
+  private toastComponent?: ToastComponent;
 
-protected toasts: { text: string, classname: string, delay: number }[] = [];
-
-public getToasts() {
- return this.toasts;
-}
-
-
-show(text: string, options: { classname?: string, delay?: number } = {}) {
-  this.toasts.push({
-  text,
-  classname: options.classname || 'bg-primary text-white',
-  delay: options.delay || 5000
-   });
+  register(toast: ToastComponent) {
+    this.toastComponent = toast;
   }
 
-remove(toast: any) {
-this.toasts = this.toasts.filter(t => t !== toast);
-}
-
- showSuccess(message:string) {
- this.show(message, {
-  classname: 'bg-success text-white',
-  delay: 3000
-});
-}
-
-showError(message:string) {
-  this.show(message, {
-  classname: 'bg-danger text-white',
-  delay: 3000
- });
-}
-
+  show(message: string, delay = 3000, type:any) {
+    this.toastComponent?.show(message, delay, type );
+  }
 }
